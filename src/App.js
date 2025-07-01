@@ -5,10 +5,6 @@ import Contact from './Contact';
 import Home from './Home';
 import Dashboard from './Dashboard';
 
-function AddSociety() {
-  return <h2>Add Society Page</h2>;
-}
-
 function App() {
   return (
     <BrowserRouter>
@@ -19,7 +15,7 @@ function App() {
           <h5>Menu</h5>
           <ul className="list-unstyled">
             <li>
-              <Link to="/add-society">Add Society</Link>
+              <Link to="/society">Society</Link>
             </li>
           </ul>
         </div>
@@ -31,7 +27,6 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/add-society" element={<AddSociety />} />
           </Routes>
         </div>
       </div>
