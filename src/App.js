@@ -5,13 +5,8 @@ import Contact from './Contact';
 import Home from './Home';
 import Dashboard from './Dashboard';
 
-// You can create placeholder components if you don't have them yet
 function AddSociety() {
   return <h2>Add Society Page</h2>;
-}
-
-function AddHouse() {
-  return <h2>Add House Page</h2>;
 }
 
 function App() {
@@ -26,9 +21,6 @@ function App() {
             <li>
               <Link to="/add-society">Add Society</Link>
             </li>
-            <li>
-              <Link to="/add-house">Add House</Link>
-            </li>
           </ul>
         </div>
 
@@ -40,7 +32,6 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/add-society" element={<AddSociety />} />
-            <Route path="/add-house" element={<AddHouse />} />
           </Routes>
         </div>
       </div>
