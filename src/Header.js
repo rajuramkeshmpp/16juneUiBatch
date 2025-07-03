@@ -10,8 +10,12 @@ function Header() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-        <Link className="navbar-brand" to="/">SS Infotech</Link>
+      <nav
+  className="navbar navbar-expand-lg px-3"
+  style={{ backgroundColor: '#145A32' }}
+>
+
+        <Link className="navbar-brand" to="/">MRA Infotech</Link>
 
         {isLoggedIn ? (
           <div className="collapse navbar-collapse">
