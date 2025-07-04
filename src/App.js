@@ -1,32 +1,110 @@
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
 import Header from './Header';
-import About from './About';
-import Contact from './Contact';
-import Home from './Home';
 import Dashboard from './Dashboard';
+import Sample1 from './Sample1';
+import Sample2 from './Sample2';
+import Sample3 from './Sample3';
+
+function Sidebar() {
+  const location = useLocation();
+
+  return (
+    <div className="bg-dark text-light vh-100" style={{ width: "250px" }}>
+      <div className="p-3">
+        <h4 className="mb-4">
+          <i className="bi bi-grid-fill me-2"></i>
+          Navigation
+        </h4>
+        <ul className="nav nav-pills flex-column gap-2">
+          <li className="nav-item">
+            <Link
+              to="/dashboard"
+              className={`nav-link d-flex align-items-center ${
+                location.pathname === "/dashboard" ? "active" : "text-light"
+              }`}
+            >
+              <i className="bi bi-speedometer2 me-2"></i>
+              Dashboard
+              <span className="badge bg-primary ms-auto">New</span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/society"
+              className={`nav-link d-flex align-items-center ${
+                location.pathname === "/society" ? "active" : "text-light"
+              }`}
+            >
+              <i className="bi bi-building me-2"></i>
+              Add Society
+              <span className="badge bg-success ms-auto">Hot</span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/house"
+              className={`nav-link d-flex align-items-center ${
+                location.pathname === "/house" ? "active" : "text-light"
+              }`}
+            >
+              <i className="bi bi-house-fill me-2"></i>
+              Add House
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/sample1"
+              className={`nav-link d-flex align-items-center ${
+                location.pathname === "/sample1" ? "active" : "text-light"
+              }`}
+            >
+              <i className="bi bi-file-earmark-text me-2"></i>
+              Sample 1
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/sample2"
+              className={`nav-link d-flex align-items-center ${
+                location.pathname === "/sample2" ? "active" : "text-light"
+              }`}
+            >
+              <i className="bi bi-file-earmark-text me-2"></i>
+              Sample 2
+              <span className="badge bg-warning text-dark ms-auto">Updated</span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to="/sample3"
+              className={`nav-link d-flex align-items-center ${
+                location.pathname === "/sample3" ? "active" : "text-light"
+              }`}
+            >
+              <i className="bi bi-file-earmark-text me-2"></i>
+              Sample 3
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <div className="container mt-3 d-flex">
-        {/* Sidebar */}
-        <div className="sidebar p-3 border-end" style={{ width: "200px" }}>
-          <h5>Menu</h5>
-          <ul className="list-unstyled">
-            <li>
-              <Link to="/society">Society</Link>
-            </li>
-          </ul>
-        </div>
+      <div className="d-flex">
+        <Sidebar />
 
-        {/* Main Content */}
-        <div className="flex-grow-1 p-3">
+        <div className="flex-grow-1 p-4">
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/sample1" element={<Sample1 />} />
+            <Route path="/sample2" element={<Sample2 />} />
+            <Route path="/sample3" element={<Sample3 />} />
+            {/* Add /society and /house routes */}
           </Routes>
         </div>
       </div>

@@ -1,108 +1,132 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { FaUser, FaSignInAlt } from 'react-icons/fa';
-import './App.css';
+import { FaUser, FaSignInAlt, FaGoogle, FaFacebookF, FaTwitter } from 'react-icons/fa';
 
 function Header() {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-        <Link className="navbar-brand" to="/">SS Infotech</Link>
-
-        {isLoggedIn ? (
-          <div className="collapse navbar-collapse">
+      {/* Navbar */}
+      <nav
+        className="navbar navbar-expand-lg navbar-dark"
+        style={{ background: 'linear-gradient(90deg, #343a40, #212529)' }}
+      >
+        <div className="container-fluid">
+          <Link className="navbar-brand fw-bold" to="/">
+            SS Docs
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link hover-effect" to="/home">Country</Link>
+                <Link className="nav-link" to="/sample1">
+                  Sample 1
+                </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link hover-effect" to="/about">City</Link>
+                <Link className="nav-link" to="/sample2">
+                  Sample 2
+                </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link hover-effect" to="/contact">Employee</Link>
+                <Link className="nav-link" to="/sample3">
+                  Sample 3
+                </Link>
               </li>
             </ul>
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <button className="btn btn-outline-light me-2">Admin</button>
-              </li>
-              <li className="nav-item">
-                <button className="btn btn-outline-light" onClick={() => setIsLoggedIn(false)}>Logout</button>
-              </li>
-            </ul>
+            <div className="d-flex">
+              <button
+                className="btn btn-outline-light me-2"
+                onClick={() => setShowSignup(true)}
+              >
+                <FaUser className="me-1" /> Sign Up
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={() => setShowLogin(true)}
+              >
+                <FaSignInAlt className="me-1" /> Login
+              </button>
+            </div>
           </div>
-        ) : (
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link hover-effect" to="/home">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link hover-effect" to="/about">About</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link hover-effect" to="/contact">ContactUs</Link>
-              </li>
-            </ul>
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <button className="btn btn-outline-light me-2" onClick={() => setShowSignup(true)}><FaUser /> Sign Up</button>
-              </li>
-              <li className="nav-item">
-                <button className="btn btn-outline-light" onClick={() => setShowLogin(true)}><FaSignInAlt /> Login</button>
-              </li>
-            </ul>
-          </div>
-        )}
+        </div>
       </nav>
 
       {/* Login Modal */}
       {showLogin && (
-        <div className="modal d-block custom-modal-bg" tabIndex="-1" onClick={() => setShowLogin(false)}>
-          <div className="modal-dialog modal-dialog-centered custom-modal-size" onClick={e => e.stopPropagation()}>
-            <div className="modal-content custom-modal-content">
-              <div className="modal-header">
+        <div
+          className="modal d-block"
+          tabIndex="-1"
+          style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
+          onClick={() => setShowLogin(false)}
+        >
+          <div
+            className="modal-dialog modal-dialog-centered"
+            style={{ maxWidth: "400px" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-content shadow rounded-3">
+              <div className="modal-header bg-primary text-white">
                 <h5 className="modal-title">Login</h5>
-                <button type="button" className="btn-close" onClick={() => setShowLogin(false)}></button>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setShowLogin(false)}
+                ></button>
               </div>
               <div className="modal-body">
-                <form className="custom-login-form">
-                  <h4 className="text-center text-success mb-4">Login</h4>
-                  <div className="row">
-                    <div className="mb-3 col-md-12">
-                      <label className="form-label">Email</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Enter email"
-                      />
-                    </div>
-                    <div className="mb-3 col-md-12">
-                      <label className="form-label">Password</label>
-                      <input
-                        type="password"
-                        className="form-control"
-                        placeholder="Enter password"
-                      />
-                    </div>
+                <form>
+                  <div className="mb-3">
+                    <label className="form-label">Email</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Enter email"
+                    />
                   </div>
-                  <div className="text-center mt-3">
-                    <button
-                      type="submit"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setIsLoggedIn(true);
-                        setShowLogin(false);
-                      }}
-                      className="btn btn-success w-100"
-                    >
-                      Login
+                  <div className="mb-3">
+                    <label className="form-label">Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Enter password"
+                    />
+                  </div>
+                  <button type="submit" className="btn btn-primary w-100 mb-3">
+                    Login
+                  </button>
+                  <div className="d-flex justify-content-center gap-2">
+                    <button className="btn btn-outline-danger btn-sm">
+                      <FaGoogle />
+                    </button>
+                    <button className="btn btn-outline-primary btn-sm">
+                      <FaFacebookF />
+                    </button>
+                    <button className="btn btn-outline-info btn-sm">
+                      <FaTwitter />
                     </button>
                   </div>
+                  <p className="text-center mt-3 mb-0">
+                    No account?{" "}
+                    <button
+                      className="btn btn-link p-0"
+                      onClick={() => {
+                        setShowLogin(false);
+                        setShowSignup(true);
+                      }}
+                    >
+                      Sign up
+                    </button>
+                  </p>
                 </form>
               </div>
             </div>
@@ -112,80 +136,78 @@ function Header() {
 
       {/* Signup Modal */}
       {showSignup && (
-        <div className="modal d-block custom-modal-bg" tabIndex="-1" onClick={() => setShowSignup(false)}>
-          <div className="modal-dialog modal-dialog-centered custom-modal-size" onClick={e => e.stopPropagation()}>
-            <div className="modal-content custom-modal-content">
-              <div className="modal-header">
+        <div
+          className="modal d-block"
+          tabIndex="-1"
+          style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
+          onClick={() => setShowSignup(false)}
+        >
+          <div
+            className="modal-dialog modal-dialog-centered"
+            style={{ maxWidth: "400px" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-content shadow rounded-3">
+              <div className="modal-header bg-primary text-white">
                 <h5 className="modal-title">Sign Up</h5>
-                <button type="button" className="btn-close" onClick={() => setShowSignup(false)}></button>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setShowSignup(false)}
+                ></button>
               </div>
               <div className="modal-body">
-                <form className="custom-signup-form">
-                  <h4 className="text-center text-success mb-4">Register Here</h4>
-                  <div className="row">
-                    <div className="mb-3 col-md-6">
-                      <label className="form-label">First Name</label>
-                      <input type="text" className="form-control" placeholder="First Name" />
-                    </div>
-                    <div className="mb-3 col-md-6">
-                      <label className="form-label">Last Name</label>
-                      <input type="text" className="form-control" placeholder="Last Name" />
-                    </div>
-                    <div className="mb-3 col-md-6">
-                      <label className="form-label">Email</label>
-                      <input type="email" className="form-control" placeholder="Email" />
-                    </div>
-                    <div className="mb-3 col-md-6">
-                      <label className="form-label">Password</label>
-                      <input type="password" className="form-control" placeholder="Password" />
-                    </div>
-                    <div className="mb-3 col-md-6">
-                      <label className="form-label">Mobile</label>
-                      <input type="tel" className="form-control" placeholder="Mobile Number" />
-                    </div>
-                    <div className="mb-3 col-md-6">
-                      <label className="form-label">Country</label>
-                      <select className="form-select">
-                        <option value="">Select Country</option>
-                        <option>India</option>
-                        <option>USA</option>
-                        <option>UK</option>
-                      </select>
-                    </div>
-                    <div className="mb-3 col-md-12">
-                      <label className="form-label">Address</label>
-                      <textarea className="form-control" rows="2" placeholder="Address"></textarea>
-                    </div>
-                    <div className="mb-3 col-md-6">
-                      <label className="form-label d-block">Gender</label>
-                      <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="gender" id="male" value="Male" />
-                        <label className="form-check-label" htmlFor="male">Male</label>
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="radio" name="gender" id="female" value="Female" />
-                        <label className="form-check-label" htmlFor="female">Female</label>
-                      </div>
-                    </div>
-                    <div className="mb-3 col-md-6">
-                      <label className="form-label d-block">Qualification</label>
-                      <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="checkbox" id="tenth" />
-                        <label className="form-check-label" htmlFor="tenth">10th</label>
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="checkbox" id="twelfth" />
-                        <label className="form-check-label" htmlFor="twelfth">12th</label>
-                      </div>
-                      <div className="form-check form-check-inline">
-                        <input className="form-check-input" type="checkbox" id="graduate" />
-                        <label className="form-check-label" htmlFor="graduate">Graduation</label>
-                      </div>
-                    </div>
+                <form>
+                  <div className="mb-3">
+                    <label className="form-label">Full Name</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Your name"
+                    />
                   </div>
-                  <div className="text-center mt-3">
-                    <button type="submit" className="btn btn-success px-4">Register</button>
+                  <div className="mb-3">
+                    <label className="form-label">Email</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="name@example.com"
+                    />
                   </div>
+                  <div className="mb-3">
+                    <label className="form-label">Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Choose a password"
+                    />
+                  </div>
+                  <button type="submit" className="btn btn-primary w-100 mb-3">
+                    Create Account
+                  </button>
+                  <div className="d-flex justify-content-center gap-2">
+                    <button className="btn btn-outline-danger btn-sm">
+                      <FaGoogle />
+                    </button>
+                    <button className="btn btn-outline-primary btn-sm">
+                      <FaFacebookF />
+                    </button>
+                    <button className="btn btn-outline-info btn-sm">
+                      <FaTwitter />
+                    </button>
+                  </div>
+                  <p className="text-center mt-3 mb-0">
+                    Already have an account?{" "}
+                    <button
+                      className="btn btn-link p-0"
+                      onClick={() => {
+                        setShowSignup(false);
+                        setShowLogin(true);
+                      }}
+                    >
+                      Sign in
+                    </button>
+                  </p>
                 </form>
               </div>
             </div>
