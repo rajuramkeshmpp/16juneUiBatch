@@ -9,7 +9,7 @@ function Header() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark" style={{ background: 'linear-gradient(90deg, #343a40, #212529)' }}>
-        <div className="container-fluid">
+        <div className="container-fluid"><i className="bi bi-grid-fill me-2"></i>
           <Link className="navbar-brand fw-bold" to="/">SS Docs</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>

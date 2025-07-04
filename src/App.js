@@ -4,7 +4,6 @@ import Dashboard from './Dashboard';
 import Sample1 from './Sample1';
 import Sample2 from './Sample2';
 import Sample3 from './Sample3';
-import Footer from './Footer';
 
 function Sidebar() {
   const location = useLocation();
@@ -12,80 +11,24 @@ function Sidebar() {
   return (
     <div className="bg-dark text-light vh-100" style={{ width: "250px" }}>
       <div className="p-3">
-        <h4 className="mb-4">
-          <i className="bi bi-grid-fill me-2"></i>
-          Navigation
-        </h4>
+        {/* <h4 className="mb-4"><i className="bi bi-grid-fill me-2"></i>Navigation</h4> */}
         <ul className="nav nav-pills flex-column gap-2">
           <li className="nav-item">
-            <Link
-              to="/dashboard"
-              className={`nav-link d-flex align-items-center ${
-                location.pathname === "/dashboard" ? "active" : "text-light"
-              }`}
-            >
-              <i className="bi bi-speedometer2 me-2"></i>
-              Dashboard
-              <span className="badge bg-primary ms-auto">New</span>
+            <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
+              <i className="bi bi-speedometer2 me-2"></i> Dashboard <span className="badge bg-primary ms-auto">New</span>
+            </Link>
+          </li>
+          {/* <li className="nav-item">
+            <Link to="/society" className={`nav-link d-flex align-items-center ${location.pathname === "/society" ? "active" : "text-light"}`}>
+              <i className="bi bi-building me-2"></i> Add Society <span className="badge bg-success ms-auto">Hot</span>
             </Link>
           </li>
           <li className="nav-item">
-            <Link
-              to="/society"
-              className={`nav-link d-flex align-items-center ${
-                location.pathname === "/society" ? "active" : "text-light"
-              }`}
-            >
-              <i className="bi bi-building me-2"></i>
-              Add Society
-              <span className="badge bg-success ms-auto">Hot</span>
+            <Link to="/house" className={`nav-link d-flex align-items-center ${location.pathname === "/house" ? "active" : "text-light"}`}>
+              <i className="bi bi-house-fill me-2"></i> Add House <span className="badge bg-warning text-dark ms-auto">Updated</span>
             </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/house"
-              className={`nav-link d-flex align-items-center ${
-                location.pathname === "/house" ? "active" : "text-light"
-              }`}
-            >
-              <i className="bi bi-house-fill me-2"></i>
-              Add House
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/sample1"
-              className={`nav-link d-flex align-items-center ${
-                location.pathname === "/sample1" ? "active" : "text-light"
-              }`}
-            >
-              <i className="bi bi-file-earmark-text me-2"></i>
-              Sample 1
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/sample2"
-              className={`nav-link d-flex align-items-center ${
-                location.pathname === "/sample2" ? "active" : "text-light"
-              }`}
-            >
-              <i className="bi bi-file-earmark-text me-2"></i>
-              Sample 2
-              <span className="badge bg-warning text-dark ms-auto">Updated</span>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/sample3"
-              className={`nav-link d-flex align-items-center ${
-                location.pathname === "/sample3" ? "active" : "text-light"
-              }`}
-            >
-              <i className="bi bi-file-earmark-text me-2"></i>
-              Sample 3
-            </Link>
-          </li>
+          </li> */}
+
         </ul>
       </div>
     </div>
