@@ -1,18 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-function CountryManager() {
+function Sample1() {
   const [countries, setCountries] = useState([
     { id: 1, name: "India" },
     { id: 2, name: "USA" },
-    { id: 3, name: "Germany" },
-    { id: 4, name: "France" },
-    { id: 5, name: "Japan" },
-    { id: 6, name: "Brazil" },
-    { id: 7, name: "Canada" },
-    { id: 8, name: "Australia" },
-    { id: 9, name: "Spain" },
-    { id: 10, name: "Italy" },
-    { id: 11, name: "China" },
   ]);
 
   const [showAddModal, setShowAddModal] = useState(false);
@@ -54,53 +45,26 @@ function CountryManager() {
   return (
     <div className="container mt-4">
       <h2>Country Management</h2>
-
-      <button
-        className="btn btn-primary mb-3"
-        onClick={() => setShowAddModal(true)}
-      >
-        Add Country
-      </button>
-
+      <button className="btn btn-primary mb-3" onClick={() => setShowAddModal(true)}>Add Country</button>
       <div className="row g-2 mb-3 align-items-center">
         <div className="col-md-4">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={e => {
-              setSearchTerm(e.target.value);
-              setCurrentPage(1);
-            }}
+          <input type="text" className="form-control" placeholder="Search..." value={searchTerm} onChange={e => { setSearchTerm(e.target.value);
+              setCurrentPage(1); }}
           />
         </div>
         <div className="col-md-4">
-          <button
-  className="btn btn-success"
-  onClick={handleDownload}
-  title="Download CSV"
->
-  <i className="bi bi-download"></i>
-</button>
+          <button className="btn btn-success" onClick={handleDownload} title="Download CSV"><i className="bi bi-download"></i> Export</button>
         </div>
         <div className="col-md-4 text-md-end">
           <label className="form-label me-2 mb-0">Items per page:</label>
-          <select
-            className="form-select d-inline-block w-auto"
-            value={pageSize}
-            onChange={e => {
-              setPageSize(parseInt(e.target.value));
-              setCurrentPage(1);
-            }}
-          >
+          <select className="form-select d-inline-block w-auto" value={pageSize} onChange={e => {
+              setPageSize(parseInt(e.target.value)); setCurrentPage(1); }}>
             <option value={3}>3</option>
             <option value={5}>5</option>
             <option value={10}>10</option>
           </select>
         </div>
       </div>
-
       <table className="table table-bordered table-striped">
         <thead className="table-light">
           <tr>
@@ -117,9 +81,7 @@ function CountryManager() {
           ))}
           {paginatedCountries.length === 0 && (
             <tr>
-              <td colSpan="2" className="text-center">
-                No countries found.
-              </td>
+              <td colSpan="2" className="text-center">No countries found.</td>
             </tr>
           )}
         </tbody>
@@ -129,18 +91,8 @@ function CountryManager() {
       <nav>
         <ul className="pagination justify-content-center">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-            <li
-              key={page}
-              className={`page-item ${
-                currentPage === page ? "active" : ""
-              }`}
-            >
-              <button
-                className="page-link"
-                onClick={() => setCurrentPage(page)}
-              >
-                {page}
-              </button>
+            <li key={page} className={`page-item ${ currentPage === page ? "active" : "" }`}>
+              <button className="page-link" onClick={() => setCurrentPage(page)}>{page}</button>
             </li>
           ))}
         </ul>
@@ -148,40 +100,19 @@ function CountryManager() {
 
       {/* Modal */}
       {showAddModal && (
-        <div
-          className="modal fade show"
-          style={{ display: "block" }}
-          tabIndex="-1"
-        >
+        <div className="modal fade show" style={{ display: "block" }} tabIndex="-1">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">Add Country</h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  onClick={() => setShowAddModal(false)}
-                ></button>
+                <button type="button" className="btn-close" onClick={() => setShowAddModal(false)}></button>
               </div>
               <div className="modal-body">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Country Name"
-                  value={newCountry}
-                  onChange={e => setNewCountry(e.target.value)}
-                />
+                <input type="text" className="form-control" placeholder="Country Name" value={newCountry} onChange={e => setNewCountry(e.target.value)} />
               </div>
               <div className="modal-footer">
-                <button
-                  className="btn btn-secondary"
-                  onClick={() => setShowAddModal(false)}
-                >
-                  Cancel
-                </button>
-                <button className="btn btn-primary" onClick={handleAddCountry}>
-                  Save
-                </button>
+                <button className="btn btn-secondary" onClick={() => setShowAddModal(false)}>Cancel</button>
+                <button className="btn btn-primary" onClick={handleAddCountry}>Save</button>
               </div>
             </div>
           </div>
@@ -190,13 +121,10 @@ function CountryManager() {
 
       {/* Backdrop */}
       {showAddModal && (
-        <div
-          className="modal-backdrop fade show"
-          onClick={() => setShowAddModal(false)}
-        ></div>
+        <div className="modal-backdrop fade show" onClick={() => setShowAddModal(false)}></div>
       )}
     </div>
   );
 }
 
-export default CountryManager;
+export default Sample1;

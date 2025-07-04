@@ -4,6 +4,7 @@ import Dashboard from './Dashboard';
 import Sample1 from './Sample1';
 import Sample2 from './Sample2';
 import Sample3 from './Sample3';
+import Footer from './Footer';
 
 function Sidebar() {
   const location = useLocation();
@@ -97,14 +98,12 @@ function App() {
       <Header />
       <div className="d-flex">
         <Sidebar />
-
         <div className="flex-grow-1 p-4">
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/sample1" element={<Sample1 />} />
             <Route path="/sample2" element={<Sample2 />} />
             <Route path="/sample3" element={<Sample3 />} />
-            {/* Add /society and /house routes */}
           </Routes>
         </div>
       </div>
