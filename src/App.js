@@ -1,73 +1,147 @@
-import { BrowserRouter, Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Dashboard from './Dashboard';
-import Sample1 from './Sample1';
-import Sample2 from './Sample2';
-import Sample3 from './Sample3';
-import EmployeeReport from './EmployeeReport';
-import CompanyReport from './CompanyReport';
-import FeedbackReport from './FeedbackReport';
+import Footer from './Footer';
+import EmployeeWelcome from './Employee/Welcome';
+import EmployeeMyaccount from './Employee/Myaccount';
+import EmployeeJobmatches from './Employee/Jobmatches';
+import EmployeeMyappliedjob from './Employee/Myappliedjob';
+import EmployeeMyinbox from './Employee/Myinbox';
+import EmployeeChangepassword from './Employee/Changepassword';
+import EmployeeLogout from './Employee/Logout';
+import CompanyPostnewjob from './Company/Postnewjob';
+import CompanyMyaccount from './Company/Myaccount';
+import CompanyProfilematch from './Company/Profilematch';
+import CompanyAppliedjob from './Company/Appliedjob';
+import AdminEmployeereport from './Admin/Employeereport';
+import AdminCompanyreport from './Admin/Companyreport';
+import AdminFeedbackreport from './Admin/Feedbackreport';
+import Searchjobcategory from './Job Category/Searchjobcategory';
+import Home from './Home';
+import Feedback from './Feedback';
+import Contactus from './Contactus';
+import Roles from './Superadmin/Roles';
+import Users from './Superadmin/Users';
+import Usersroles from './Superadmin/Usersroles';
 
 function Sidebar() {
   const location = useLocation();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    // Example: localStorage.removeItem("adminToken");
-    navigate('/'); // Redirect to homepage or login
-  };
 
   return (
-    <div className="bg-dark text-light vh-100" style={{ width: "250px" }}>
+    <div className="navbar navbar-expand-lg bg-dark custom-navbar" style={{ width: "250px" }}>
       <div className="p-3">
-        <h4 className="mb-4">
-          <i className="bi bi-grid-fill me-2"></i> Navigation
+        <h4 className="mb-4 text-light">
+          <i className="bi bi-grid-fill me-2 text-light"></i> 
+          Navigation
         </h4>
+        <hr className="border-secondary my-3" /> 
         <ul className="nav nav-pills flex-column gap-2">
           <li className="nav-item">
             <Link to="/dashboard" className={`nav-link d-flex align-items-center ${location.pathname === "/dashboard" ? "active" : "text-light"}`}>
-              <i className="bi bi-speedometer2 me-2"></i> Dashboard
+              <i className="bi bi-speedometer2 me-2 text-primary"></i> Dashboard
+              <span className="badge bg-primary ms-auto">New</span>
+            </Link>
+          </li>
+          <br />
+          <Searchjobcategory />
+          <hr className="border-secondary my-3" /> 
+          <li className="nav-item">
+            <Link to="/employee/welcome" className={`nav-link d-flex align-items-center ${location.pathname === "/employee/welcome" ? "active" : "text-light"}`}>
+              <i className="bi bi-emoji-smile me-2 text-warning"></i> Welcome
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/sample1" className={`nav-link d-flex align-items-center ${location.pathname === "/sample1" ? "active" : "text-light"}`}>
-              <i className="bi bi-file-earmark-text me-2"></i> Sample 1
+            <Link to="/employee/myaccount" className={`nav-link d-flex align-items-center ${location.pathname === "/employee/myaccount" ? "active" : "text-light"}`}>
+              <i className="bi bi-person-fill me-2 text-primary"></i> My Account
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/sample2" className={`nav-link d-flex align-items-center ${location.pathname === "/sample2" ? "active" : "text-light"}`}>
-              <i className="bi bi-file-earmark-text me-2"></i> Sample 2
+            <Link to="/employee/jobmatches" className={`nav-link d-flex align-items-center ${location.pathname === "/employee/jobmatches" ? "active" : "text-light"}`}>
+              <i className="bi bi-briefcase me-2  text-success"></i> Job Matches
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/sample3" className={`nav-link d-flex align-items-center ${location.pathname === "/sample3" ? "active" : "text-light"}`}>
-              <i className="bi bi-file-earmark-text me-2"></i> Sample 3
+            <Link to="/employee/myappliedjob" className={`nav-link d-flex align-items-center ${location.pathname === "/employee/myappliedjob" ? "active" : "text-light"}`}>
+              <i className="bi bi-file-earmark-check me-2 text-info"></i> My Applied Job
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/employee/myinbox" className={`nav-link d-flex align-items-center ${location.pathname === "/employee/myinbox" ? "active" : "text-light"}`}>
+              <i className="bi bi-envelope-fill me-2  text-info"></i> My Inbox
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/employee/changepassword" className={`nav-link d-flex align-items-center ${location.pathname === "/employee/changepassword" ? "active" : "text-light"}`}>
+              <i className="bi bi-lock-fill me-2 text-warning"></i> Change Password
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/employee/logout" className={`nav-link d-flex align-items-center ${location.pathname === "/employee/logout" ? "active" : "text-danger"}`}>
+              <i className="bi bi-box-arrow-right me-2 text-danger"></i> Log Out
             </Link>
           </li>
         </ul>
-
-        <hr className="text-light mt-4" />
-        <h5 className="text-white mb-3">Admin Menu</h5>
+        <br />
+        <hr className="border-secondary my-3" /> 
+        <br />
         <ul className="nav nav-pills flex-column gap-2">
           <li className="nav-item">
-            <Link to="/admin/employee-report" className={`nav-link d-flex align-items-center ${location.pathname === "/admin/employee-report" ? "active" : "text-light"}`}>
-              <i className="bi bi-person me-2"></i> Employee Report
+            <Link to="/company/postnewjob" className={`nav-link d-flex align-items-center ${location.pathname === "/company/postnewjob" ? "active" : "text-light"}`}>
+              <i className="bi bi-plus-circle me-2 text-warning"></i> Post New Job
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/admin/company-report" className={`nav-link d-flex align-items-center ${location.pathname === "/admin/company-report" ? "active" : "text-light"}`}>
-              <i className="bi bi-building me-2"></i> Company Report
+            <Link to="/company/myaccount" className={`nav-link d-flex align-items-center ${location.pathname === "/company/myaccount" ? "active" : "text-light"}`}>
+              <i className="bi bi-person-circle me-2 text-primary"></i> My Account
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/admin/feedback-report" className={`nav-link d-flex align-items-center ${location.pathname === "/admin/feedback-report" ? "active" : "text-light"}`}>
-              <i className="bi bi-chat-left-text me-2"></i> Feedback Report
+            <Link to="/company/profilematch" className={`nav-link d-flex align-items-center ${location.pathname === "/company/profilematch" ? "active" : "text-light"}`}>
+              <i className="bi bi-person-check-fill me-2 text-info"></i> Profile Match
             </Link>
           </li>
           <li className="nav-item">
-            <button onClick={handleLogout} className="nav-link btn btn-link text-start text-light d-flex align-items-center">
-              <i className="bi bi-box-arrow-right me-2"></i> Admin Logout
-            </button>
+            <Link to="/company/appliedjob" className={`nav-link d-flex align-items-center ${location.pathname === "/company/appliedjob" ? "active" : "text-light"}`}>
+              <i className="bi bi-check2-square me-2 text-success"></i> Applied Job
+            </Link>
+          </li>
+        </ul>
+        <br />
+        <hr className="border-secondary my-3" /> 
+        <br />
+        <ul className="nav nav-pills flex-column gap-2">
+          <li className="nav-item">
+            <Link to="/admin/employeereport" className={`nav-link d-flex align-items-center ${location.pathname === "/admin/employeereport" ? "active" : "text-light"}`}>
+              <i className="bi bi-clipboard-check me-2 text-warning"></i> Employee Report
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/admin/companyreport" className={`nav-link d-flex align-items-center ${location.pathname === "/admin/companyreport" ? "active" : "text-light"}`}>
+              <i className="bi bi-bar-chart-line me-2 text-info"></i> Company Report
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/admin/feedbackreport" className={`nav-link d-flex align-items-center ${location.pathname === "/admin/feedbackreport" ? "active" : "text-light"}`}>
+              <i className="bi bi-chat-dots-fill me-2 text-danger"></i> Feedback Report
+            </Link>
+          </li>
+        </ul>
+        <br />
+        <ul className="nav nav-pills flex-column gap-2">
+          <li className="nav-item">
+            <Link to="/superadmin/roles" className={`nav-link d-flex align-items-center ${location.pathname === "/superadmin/roles" ? "active" : "text-light"}`}>
+              <i className="bi bi-shield-lock-fill me-2 text-danger"></i> Roles
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/superadmin/users" className={`nav-link d-flex align-items-center ${location.pathname === "/superadmin/users" ? "active" : "text-light"}`}>
+              <i className="bi bi-people-fill me-2 text-primary"></i> Users
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/superadmin/usersroles" className={`nav-link d-flex align-items-center ${location.pathname === "/superadmin/usersroles" ? "active" : "text-light"}`}>
+              <i className="bi bi-person-badge-fill me-2 text-warning"></i> Users Roles
+            </Link>
           </li>
         </ul>
       </div>
@@ -83,18 +157,34 @@ function App() {
         <Sidebar />
         <div className="flex-grow-1 p-4">
           <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/header" element={<Header />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/sample1" element={<Sample1 />} />
-            <Route path="/sample2" element={<Sample2 />} />
-            <Route path="/sample3" element={<Sample3 />} />
-
-            {/* Admin Report Pages */}
-            <Route path="/admin/employee-report" element={<EmployeeReport />} />
-            <Route path="/admin/company-report" element={<CompanyReport />} />
-            <Route path="/admin/feedback-report" element={<FeedbackReport />} />
+            <Route path="/employee/welcome" element={<EmployeeWelcome />} />
+            <Route path="/employee/myaccount" element={<EmployeeMyaccount />} />
+            <Route path="/employee/jobmatches" element={<EmployeeJobmatches />} />
+            <Route path="/employee/myappliedjob" element={<EmployeeMyappliedjob />} />
+            <Route path="/employee/myinbox" element={<EmployeeMyinbox />} />
+            <Route path="/employee/changepassword" element={<EmployeeChangepassword />} />
+            <Route path="/employee/logout" element={<EmployeeLogout />} />
+            <Route path="/company/postnewjob" element={<CompanyPostnewjob />} />
+            <Route path="/company/myaccount" element={<CompanyMyaccount />} />
+            <Route path="/company/profilematch" element={<CompanyProfilematch />} />
+            <Route path="/company/appliedjob" element={<CompanyAppliedjob />} />
+            <Route path="/admin/employeereport" element={<AdminEmployeereport />} />
+            <Route path="/admin/companyreport" element={<AdminCompanyreport />} />
+            <Route path="/admin/feedbackreport" element={<AdminFeedbackreport />} />
+            <Route path="/searchjobcategory" element={<Searchjobcategory />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/feedback" element={<Feedback />} />
+            <Route path="/contactus" element={<Contactus />} />
+            <Route path="/superadmin/roles" element={<Roles />} />
+            <Route path="/superadmin/users" element={<Users />} />
+            <Route path="/superadmin/usersroles" element={<Usersroles />} />
           </Routes>
         </div>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }
