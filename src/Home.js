@@ -1,79 +1,91 @@
-import { Link } from "react-router-dom";
-
 function Home() {
   return (
-    <div className="container mt-5">
-      <div className="text-center mb-5">
-        <h1 className="display-4 text-info fw-bold">
-          <i className="bi bi-emoji-smile me-2 text-warning"></i>
-          Welcome to MRA Infotech
-        </h1>
-        <p className="lead">
-          Discover your dream job or hire the right talent — all in one place!
-        </p>
-      </div>
+    <div
+      style={{
+        minHeight: "100vh",
+        backgroundColor: "#fdf6f0", // soft creamy background
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "2rem",
+      }}
+    >
+      <div className="container">
+        <div className="text-center mb-5">
+          <h1 className="display-4 fw-bold text-dark">
+            <span role="img" aria-label="wave">👋</span> Welcome to <span className="text-primary">VivS Infotech</span>
+          </h1>
+          <p className="fs-5 text-secondary">
+            Your career starts here — discover jobs or hire talent easily.
+          </p>
+        </div>
 
-      <div className="row g-4 justify-content-center">
-        {/* Job Seekers Section */}
-        <div className="col-md-5">
-          <div className="card shadow border-0">
-            <div className="card-body text-center">
-              <i className="bi bi-person-badge fs-1 text-muted mb-3"></i>
-              <h4 className="card-title">I'm a Job Seeker</h4>
-              <p className="card-text">
-                Explore job listings and apply with just a few clicks.
+        <div className="row justify-content-center g-4">
+          {/* Job Seeker Section */}
+          <div className="col-md-5">
+            <div className="glass-card text-center p-4">
+              <i className="bi bi-person-badge fs-1 text-primary mb-3"></i>
+              <h4 className="fw-semibold">I'm a Job Seeker</h4>
+              <p className="text-muted mb-0">
+                Explore job listings and apply to your dream career.
               </p>
-              <Link to="/dashboard" className="btn btn-success">
-                Start Finding Jobs
-              </Link>
             </div>
           </div>
-        </div>
 
-        {/* Employers Section */}
-        <div className="col-md-5">
-          <div className="card shadow border-0">
-            <div className="card-body text-center">
-              <i className="bi bi-building fs-1 text-primary mb-3"></i>
-              <h4 className="card-title">I'm a Company</h4>
-              <p className="card-text">
-                Post job vacancies and connect with skilled professionals.
+          {/* Company Section */}
+          <div className="col-md-5">
+            <div className="glass-card text-center p-4">
+              <i className="bi bi-building fs-1 text-success mb-3"></i>
+              <h4 className="fw-semibold">I'm a Company</h4>
+              <p className="text-muted mb-0">
+                Post openings and hire the right talent fast.
               </p>
-              <Link to="/company/postnewjob" className="btn btn-primary">
-                Post a Job
-              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Features */}
+        <div className="mt-5 text-center">
+          <h3 className="fw-bold text-dark mb-4">Why Choose VivS?</h3>
+          <div className="row g-4">
+            <div className="col-md-4">
+              <div className="glass-card p-4 h-100">
+                <i className="bi bi-search fs-2 text-info mb-2"></i>
+                <h5 className="fw-semibold">Smart Job Search</h5>
+                <p className="text-muted">Easily search by role, location or skill.</p>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="glass-card p-4 h-100">
+                <i className="bi bi-speedometer2 fs-2 text-danger mb-2"></i>
+                <h5 className="fw-semibold">Quick Hiring</h5>
+                <p className="text-muted">Get responses in days, not weeks.</p>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="glass-card p-4 h-100">
+                <i className="bi bi-people fs-2 text-warning mb-2"></i>
+                <h5 className="fw-semibold">Verified Employers</h5>
+                <p className="text-muted">Work only with trusted companies.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Features Section */}
-      <div className="mt-5 text-center">
-        <h3 className="fw-bold mb-4">Why Choose MRA Job Portal?</h3>
-        <div className="row g-4">
-          <div className="col-md-4">
-            <div className="p-3 border rounded bg-light">
-              <i className="bi bi-search fs-2 text-info"></i>
-              <h5 className="mt-2">Powerful Search</h5>
-              <p className="mb-0">Find jobs by skillset, degree, or company.</p>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="p-3 border rounded bg-light">
-              <i className="bi bi-speedometer2 fs-2 text-danger"></i>
-              <h5 className="mt-2">Faster Hiring</h5>
-              <p className="mb-0">Our platform connects you quickly and efficiently.</p>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="p-3 border rounded bg-light">
-              <i className="bi bi-people fs-2 text-warning"></i>
-              <h5 className="mt-2">Trusted Companies</h5>
-              <p className="mb-0">We verify every employer so you don’t have to.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Minimal Glassmorphism Card Styling */}
+      <style>{`
+        .glass-card {
+          background: #fff;
+          border-radius: 16px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+          border: 1px solid #e8e8e8;
+          transition: transform 0.3s ease;
+        }
+        .glass-card:hover {
+          transform: translateY(-5px);
+        }
+      `}</style>
     </div>
   );
 }
